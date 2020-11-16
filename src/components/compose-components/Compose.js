@@ -1,6 +1,6 @@
 import React from "react";
-import TextArea from "./TextArea";
-import Avatar from './Avatar';
+import Editor from "./Editor";
+import Avatar from "./Avatar";
 
 export default () => {
   return (
@@ -10,7 +10,7 @@ export default () => {
           <img src="./name.png" alt="profilePicture"></img>
         </div> */}
         <Avatar />
-        <TextArea />
+        <Editor />
       </div>
     </div>
   );
