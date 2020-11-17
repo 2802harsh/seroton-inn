@@ -33,7 +33,7 @@ export default () => {
     e.preventDefault();
     let style = e.currentTarget.getAttribute("data-style");
     onChange(RichUtils.toggleInlineStyle(editorState, style));
-    e.target.classList.toggle("selected");
+    // e.target.classList.toggle("selected");
   };
 
   return (

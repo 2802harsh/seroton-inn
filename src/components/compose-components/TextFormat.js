@@ -3,7 +3,7 @@ import React from "react";
 export default (props) => {
   return (
     <input
-      className="textformat"
+      className={"textformat"+" "+props.dataStyle}
       type="button"
       data-style={props.dataStyle}
       value={props.value}
