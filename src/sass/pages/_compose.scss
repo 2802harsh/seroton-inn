@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap');
 
 .compose {
   width: 60%;
@@ -36,7 +37,7 @@
     margin-top: 1rem;
     height: 300px;
     font-size: 18px;
-    font-family: "calibri", sans-serif;
+    font-family: 'Montserrat', sans-serif;
   }
 
   div.public-DraftStyleDefault-block .public-DraftStyleDefault-ltr {
@@ -52,24 +53,13 @@
     border-bottom: 1px solid #DDDDDD;
   }
 
-  div.toolbar input {
-    padding: 1rem;
-    margin-right: 1rem;
-    font-size: 2.5rem;
+  div.toolbar span {
+    margin-right: 3rem;
+    font-size: 3rem;
     cursor: pointer;
-    border : none;
-    background-color: inherit;
 
-      &.BOLD{
-        font-weight: 900;
-      }
-
-      &.ITALIC{
-        font-style: italic;
-      }
-
-      &.UNDERLINE{
-        text-decoration: underline;
+      svg{
+        font-size: inherit;
       }
     
   }

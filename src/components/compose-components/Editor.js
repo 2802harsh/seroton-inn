@@ -58,6 +58,7 @@ export default () => {
             />
           </div>
           <Editor
+            placeholder = "Tell us something . . ."
             editorState={editorState}
             onChange={onChange}
             handleKeyCommand={handleKeyCommand}
