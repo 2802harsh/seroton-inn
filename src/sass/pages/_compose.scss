@@ -24,10 +24,22 @@
       border-radius: 1rem;
     }
 
+    .imagePreviewContainer {
+      display: flex;
+      width: inherit;
+    }
+
     &-submit {
       margin-top: 2rem;
       padding: 2rem;
       background-color: #f2f2f2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .MuiButton-label {
+        font-size: 1.5rem;
+      }
 
       .MuiTouchRipple-root {
         display: none;
@@ -47,9 +59,9 @@
           font-size: inherit;
         }
 
-        svg.MuiSvgIcon-root {
-          color: black;
-        }
+        // svg.MuiSvgIcon-root {
+        //   color: black;
+        // }
       }
     }
 

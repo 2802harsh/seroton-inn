@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Editor, EditorState, RichUtils } from "draft-js";
 import TextFormat from "./TextFormat";
 import ImagePreview from "./ImagePreview";
-import { IconButton } from "@material-ui/core";
-import { Image } from "@material-ui/icons";
+import { IconButton, Button } from "@material-ui/core";
+import ImageIcon from "@material-ui/icons/Image";
+import SendIcon from "@material-ui/icons/Send";
 import { v4 as uuid } from "uuid";
 import "draft-js/dist/Draft.css";
 
@@ -43,19 +44,22 @@ export default () => {
     // e.target.classList.toggle("selected");
   };
 
+  useEffect(() => {
+    document.getElementById("icon-button-file").value = null;
+    console.log(src);
+  }, [src]);
+
   const onImageUpload = (e) => {
     if (e.target.files && e.target.files[0]) {
-      const reader = new FileReader();
-      reader.onload = (read) => {
-        let newObject = { value: read.target.result, id: uuid() };
-        let update = src.concat(newObject);
-        setSrc(update);
-        console.log(src);
-        // e.target.value = null;
-      };
-      for (let image of e.target.files) {
-        reader.readAsDataURL(image);
+      const imageArray = [...src];
+      for (let file of e.target.files) {
+        let img = new Image();
+        img.src = URL.createObjectURL(file);
+        img.title = file.name;
+        let newObject = { image: img, id: uuid() };
+        imageArray.push(newObject);
       }
+      setSrc(imageArray);
     }
   };
 
@@ -104,28 +108,46 @@ export default () => {
             onChange={onChange}
             handleKeyCommand={handleKeyCommand}
           />
-          {src.map((data) => (
-            <ImagePreview
-              src={data.value}
-              key={data.id}
-              id={data.id}
-              remove={remove}
-            />
-          ))}
+          <div className="imagePreviewContainer">
+            {src.map((data) => (
+              <ImagePreview
+                image={data.image}
+                key={data.id}
+                id={data.id}
+                remove={remove}
+              />
+            ))}
+          </div>
         </div>
         <div className="compose__format-submit">
           <input
             accept="image/*"
+            multiple
             id="icon-button-file"
             type="file"
+            disabled={src.length >= 4}
             onChange={onImageUpload}
             style={{ display: "none" }}
           />
           <label htmlFor="icon-button-file">
             <IconButton component="span" style={{ padding: "0" }}>
-              <Image />
+              <ImageIcon
+                style={
+                  src.length < 4
+                    ? { color: "black" }
+                    : { color: "gray", ":hover": { cursor: "arrow" } }
+                }
+              />
             </IconButton>
           </label>
+
+          <Button
+            variant="contained"
+            color="primary"
+            endIcon={<SendIcon></SendIcon>}
+          >
+            POST
+          </Button>
         </div>
       </div>
     </>

@@ -6,8 +6,8 @@ export default (props) => (
       <HighlightOff />
     </button>
     <img
-      src={props.src}
-      alt="preview"
+      src={props.image.src}
+      alt={props.image.name}
       style={{ width: "15rem", height: "15rem" }}
     />
   </div>
